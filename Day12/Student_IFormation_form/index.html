@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information Page</title>
+    <script src="https://kit.fontawesome.com/b3adb6f99b.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+            font-family: 'League Spartan', sans-serif;
+            background-color: #ccc;
+            border: 1px;
+            border-color: black;
+            border-radius: 2px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .apply_box {
+            max-width: 600px;
+            padding: 20px;
+            background-color: white;
+            margin: 0 auto;
+            margin-top: 50px;
+            box-shadow: 4px 3px 5px rgba(1, 1, 1, 0.1);
+            border-radius: 10px;
+        }
+
+        .title_small {
+            font-size: 20px;
+        }
+
+        .form_container {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            /* display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); */
+        }
+
+        .form_control {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+
+        input, select, textarea {
+            padding: 12px 5px 12px 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        input:focus {
+            outline-color: red;
+        }
+
+        .button_container {
+            display: flex;
+            justify-content: flex-end;
+            flex-direction: column;
+            margin-top: 10px;
+        }
+
+        .bt {
+            background-color: rgb(0, 255, 55);
+            border: transparent solid 2px;
+            padding: 5px 10px;
+            color: rgb(0, 0, 0);
+            border-radius: 5px;
+            font-size: 15px;
+            transition: 0.3s ease-in;
+        }
+
+        .bt:hover {
+            background-color: #ccc;
+            border: 2px solid;
+            transition: 0.3s ease-in;
+            cursor: pointer;
+        }
+
+        .form_control span, .button_container span{
+            /* position: absolute; */
+            color: red;
+            font-size: 14px;
+            margin-top: 8px;
+        }
+        .form_container span i{
+            position: fixed;
+            margin-top: -36px;
+            margin-left: 510px;
+            color: seagreen;
+            /* font-size: 10px; */
+            
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="apply_box">
+            <h1 align="center">Student Information Form
+            </h1>
+            <form method="post" id="form">
+                <div id="res" style="color: green; font-size: 14px;"></div>
+                <div class="form_container">
+                    <div class="form_control">
+                        <input id="stu_name" name="name" placeholder="Enter Your Name" onkeyup="validateName()">
+                        <span id="name-error"></span>
+                    </div>
+                    <div class="form_control">
+                        <input id="stu_fatherName" name="fname" placeholder="Enter Your Father's name" onkeyup="validatefName()">
+                        <span id="fname-error"></span>
+                    </div>
+                    <div class="form_control">
+                        <input type="email" id="email" name="email" placeholder="Enter Your Email ID" onkeyup="validateEmail()">
+                        <span id="email-error"></span>
+                    </div>
+                    <div class="form_control">
+                        <select id="class" name="course" required>
+                            <option value="">Select Class</option>
+                            <option value="B.A.">B.A</option>
+                            <option value="BCA">BCA</option>
+                            <option value="Bsc(Math)">Bsc(Math)</option>
+                            <option value="Bsc(Bio)">Bsc(Bio)</option>
+                            <option value="B.ed">B.ed</option>
+                            <option value="Bcom">Bcom</option>
+                            <option value="Bpharma">Bpharma</option>
+                            <option value="Dpharma">Dpharma</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form_control">
+                        <textarea id="address" name="address" rows="2" cols="30" placeholder="Enter Your Full Address" onkeyup="validateMessage()"></textarea>
+                        <span id="address-error"></span>
+                    </div>
+                    <div class="form_control">
+                        <input id="city" name="city" placeholder="Enter your city Name" onkeyup="validateCity()">
+                        <span id="city-error"></span>
+                    </div>
+                    <div class="form_control">
+                        <label for="date">DOB</label>
+                        <input type="date" id="date" name="dob" required>
+                    </div>
+                    <div class="button_container">
+                        <button name="btn" type="submit" class="bt" onclick="return validateForm()">Submit</button>
+                        <span id="submit-error"></span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+<script>
+//---------This Code is to transfer Data in google Sheet -----
+    let url ='https://script.google.com/macros/s/AKfycbzOhqEOOARnIQHMviLFCZQxah_JYXPOlvbIm_Bp_bDzAFL7RxM4oLldRhJ2XoOFfEsB/exec';
+    let form=document.querySelector('#form');
+    form.addEventListener("submit", (e)=>
+    {
+        e.target.btn.innerHTML="Submitting....";
+        let d=new FormData(form);
+        fetch(url, {
+            method:"POST",
+            body:d
+        }).then((res)=>res.text())
+        .then((finalRes)=>
+        {
+            e.target.btn.innerHTML="submit";
+            document.getElementById("res").innerHTML=finalRes;
+            form.reset();
+            setTimeout(()=>
+            {
+             document.getElementById("res").innerHTML='';
+
+            }, 5000)
+        })
+            e.preventDefault();
+    })
+//-----This code is for validation of form-----
+    var nameError = document.getElementById("name-error");
+    var fnameError = document.getElementById("fname-error");
+    var emailError = document.getElementById("email-error");
+    var addressError = document.getElementById("address-error");
+    var cityError = document.getElementById("city-error");
+    var submitError = document.getElementById("submit-error");
+
+    function validateName(){
+        var name = document.getElementById("stu_name").value;
+        if(name.length == 0)
+        {
+            nameError.innerHTML = 'Name is required';
+            return false;
+        }
+        if(!name.match(/^[A-Za-z]*\s{1}[A-Za-z]*$/)){
+            nameError.innerHTML = 'Write full name';
+            return false;
+        }
+        nameError.innerHTML = '<i class="fas fa-check-circle"></i>';
+        return true;
+    }
+    function validatefName(){
+        var fname = document.getElementById("stu_fatherName").value;
+        if(fname.length == 0)
+        {
+            fnameError.innerHTML = `Father's Name is required`;
+            return false;
+        }
+        if(!fname.match(/^[A-Za-z]*\s{1}[A-Za-z]*$/)){
+            fnameError.innerHTML = 'Write full name';
+            return false;
+        }
+        fnameError.innerHTML = '<i class="fas fa-check-circle"></i>';
+        return true;
+    }
+    function validateEmail(){
+        var email = document.getElementById('email').value;
+        if(email.length==0)
+        {
+            emailError.innerHTML = 'Email is required';
+            return false;
+        }
+        if(!email.match(/^[A-Za-z\._\-[0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/)){
+            emailError.innerHTML = 'Email Invalid'
+            return false;
+        }
+        emailError.innerHTML = '<i class="fas fa-check-circle"></i>';
+        return true;
+        
+    }
+    function validateMessage(){
+        var message = document.getElementById('address').value;
+        var required = 30;
+        var left = required - message.length;
+        if(left>0){
+            addressError.innerHTML = left + ' more characters required';
+            return false;
+        }
+        addressError.innerHTML = '<i class="fas fa-check-circle"></i>';
+        return true;
+    }
+    function validateCity(){
+        var city = document.getElementById('city').value;
+        var required = 10;
+        var left = required - city.length;
+        if(left>0){
+            cityError.innerHTML = left + ' more characters required';
+            return false;
+        }
+        cityError.innerHTML = '<i class="fas fa-check-circle"></i>';
+        return true;
+    }
+    function validateForm()
+    {
+        if(!validateName()||!validateCity()||!validateMessage()||!validateEmail()||!validatefName())
+        {
+            submitError.style.display = 'block';
+            submitError.innerHTML = 'Please fix error to submit';
+            setTimeout(function(){
+                submitError.style.display = 'none';
+            }, 2000);
+            return false
+        }
+    }
+
+</script>
+</html>
