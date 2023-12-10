@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Background Effect</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="img">
+            <img src="Images/profile-removebg-preview.png" width="100%">
+        <div class="original">
+            <img src="Images/profile.png" id="OriginalImg">
+        </div>
+        <span id="line">
+            <img src="Images/arrow.png" class="arrow">
+        </span>
+        </div>
+    </div>
+<script>
+     var ImgBox = document.querySelector(".img");
+     var ImgWrap = document.querySelector(".original");
+     var OriginalImg = document.getElementById("OriginalImg"); 
+     var line = document.getElementById("line");
+
+     var leftSpace = ImgBox.offsetLeft;
+
+    OriginalImg.style.width = ImgBox.offsetWidth + "px"; 
+     ImgBox.onmousemove = function(e){
+        var boxWidth = (e.pageX - leftSpace)+"px";
+        ImgWrap.style.width = boxWidth;
+        line.style.left = boxWidth;
+     }
+</script>
+</body>
+</html>
