@@ -1,0 +1,71 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+}
+body{
+    background-color: #410B13;
+    text-align: center;
+    color: wheat;
+}
+h1{
+    margin: 10px;
+}
+.container
+{
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5vmin;
+}
+.game{
+    height: 60vmin;/* 60% of dimension */
+    width: 60vmin;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5vmin;
+}
+.box{
+    height: 18vmin;
+    width: 18vmin;
+    border-radius: 1rem;
+    border: none;
+    box-shadow: 0 0 1rem rgba(255, 255, 255, 0.4);
+    font-size: 10vmin;
+    color: #1f4a36;
+    font-family: cursive;
+    font-weight: bold;
+    transition: 0.3s;
+    background-color: #ffffc7;
+}
+.reset{
+    padding: 10px;
+    border-radius: .5rem;
+    border: none;
+    outline: none;
+    font-size: 1.25rem;
+    background-color: #CD5D67;
+    color: white;
+    box-shadow: 0 0 16px rgba(255, 255, 255, 0.2);
+    transition: 0.3s;
+    margin-left: 10px;
+}
+.reset:hover{
+    box-shadow: none;
+    cursor: pointer;
+}
+.msg-contain{
+    margin-top: -10px;
+    margin-bottom: 15px;
+}
+#msg{
+    font-family: cursive;
+    font-size: 5vmin;
+}
+.hide{
+    display: none;
+}
