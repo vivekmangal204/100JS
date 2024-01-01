@@ -1,0 +1,25 @@
+body{
+    background: #7e7e7e;
+}
+.image-container{
+    width: 400px;
+    position: absolute;
+    top: 10em;
+    right: 10em;
+}
+.image{
+    border-radius: 2em;
+    width: 100%;
+    height: 100%;
+    border: 15px solid white;
+    cursor: pointer;
+}
+.image-container:first-child{
+    transform: rotate(23deg);
+}
+.image-container:nth-child(2){
+    transform: rotate(328deg);
+}
+.image-container:nth-child(3){
+    transform: rotate(169deg);
+}
