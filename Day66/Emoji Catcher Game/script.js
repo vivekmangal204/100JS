@@ -28,7 +28,7 @@ squares.forEach((square) => {
 });
 
 function moveEmoji() {
-  timerId = setInterval(randomSquare, 400);
+  timerId = setInterval(randomSquare, 500);
 }
 
 moveEmoji();
