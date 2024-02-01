@@ -1,0 +1,20 @@
+body {
+    overflow: hidden;
+  }
+  canvas {
+    background-color: #ffffff;
+  }
+  button {
+    font-size: 1em;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    padding: 1.5em 3em;
+    border-radius: 3em;
+    background-color: #8611f4;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    font-family: "Poppins", sans-serif;
+  }
