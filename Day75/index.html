@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Take Screenshots With Javascript</title>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
+      integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Stylsheet -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div id="container">
+        <h1>Car</h1>
+        <p>
+            <b>Price: $1.5 Million</b>
+            <br>
+            Want to get your hands on this lovely Aston Martin throwback? Too bad, it’s already sold out. The V12-powered, manual-transmission Valour was limited to just 110 examples worldwide, and shortly after its debut earlier in 2023, customers quickly snapped up what the company is calling "the last of an era." Those lucky 110 customers that did manage to snag one had to shell out at least $1.5 million to start, with options easily pushing it past $2.0 million.
+        </p>
+        <img src="demo-img.jpg" />
+      </div>
+      <div id="preview-container"></div>
+    </div>
+    <div class="buttons">
+      <button id="capture-button">Capture Screenshot</button>
+      <a id="download-button" class="hide">Download Screenshot</a>
+    </div>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+  </body>
+</html>
