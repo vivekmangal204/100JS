@@ -1,19 +1,25 @@
-let ratioWidth = document.getElementById("ratio-width");
-let ratioHeight = document.getElementById("ratio-height");
-let width = document.getElementById("width");
-let height = document.getElementById("height");
+let body = document.body;
+let themer = document.querySelector(".themer");
+const followButtons = document.querySelectorAll(".follow-button");
 
-let calculateWidth = () => {
-    let aspectRatio = ratioWidth.value / ratioHeight.value;
-    width.value = parseFloat((height.value * aspectRatio).toFixed(2));
-};
+themer.addEventListener("click", toggleTheme);
 
-let calculateHeight = () => {
-    let aspectRatio = ratioWidth.value / ratioHeight.value;
-    height.value = parseFloat((width.value / aspectRatio).toFixed(2));
-};
+function toggleTheme() {
+  if (body.className === "light-theme") {
+    body.className = "dark-theme";
+    themer.innerText = "Light";
+  } else {
+    body.className = "light-theme";
+    themer.innerText = "Dark";
+  }
+}
 
-height.addEventListener("input", calculateWidth);
-width.addEventListener("input", calculateHeight);
-ratioHeight.addEventListener("input", calculateHeight);
-ratioWidth.addEventListener("input", calculateHeight);
+followButtons.forEach((btn) => {
+  btn.addEventListener("click", (e) => followUnFollow(e.target));
+});
+
+function followUnFollow(button) {
+  button.classList.toggle("followed");
+  if (button.innerText == "Follow") button.innerText = "Unfollow";
+  else button.innerText = "Follow";
+}
