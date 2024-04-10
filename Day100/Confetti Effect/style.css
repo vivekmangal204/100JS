@@ -1,0 +1,26 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  background-color: #13033f;
+}
+.text {
+  font-family: "Poppins", sans-serif;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  color: #ffffff;
+  text-align: center;
+  letter-spacing: 0.2em;
+}
+h1 {
+  font-size: 3em;
+  font-weight: 600;
+}
+h3 {
+  font-weight: 400;
+}
