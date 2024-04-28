@@ -141,7 +141,7 @@
     }
     function validateMessage(){
         var message = document.getElementById('address').value;
-        var required = 30;
+        var required = 10;
         var left = required - message.length;
         if(left>0){
             addressError.innerHTML = left + ' more characters required';
@@ -152,7 +152,7 @@
     }
     function validateCity(){
         var city = document.getElementById('city').value;
-        var required = 10;
+        var required = 5;
         var left = required - city.length;
         if(left>0){
             cityError.innerHTML = left + ' more characters required';
