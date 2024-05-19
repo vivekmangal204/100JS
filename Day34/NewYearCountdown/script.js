@@ -35,7 +35,7 @@ const hourEl = document.getElementById("hour");
 const minuteEl = document.getElementById("minute");
 const secondEl = document.getElementById("second");
 
-const newYearTime = new Date("Jan 1, 2024 00:00:00").getTime();
+const newYearTime = new Date("Jan 1, 2025 00:00:00").getTime();
 
 updateCountdown();
 
