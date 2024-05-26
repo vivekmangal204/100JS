@@ -1,7 +1,7 @@
 //Get all image container
 let childElement = document.querySelectorAll(".image-container");
 //Array of image URLs
-let imageUrls = ["image-1.jpeg", "image-2.png", "image-3.webp", "image-4.jpg"];
+let imageUrls = ["image-1.png", "image-2.png", "image-3.png", "image-4.png"];
 //Initial z-index value
 let zIndex = 1;
 //Iterate through each image container
