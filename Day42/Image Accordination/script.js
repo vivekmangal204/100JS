@@ -1,10 +1,10 @@
 const items = document.querySelectorAll(".item");
 let imageURLs = [
-  "1.jpg",
-  "2.jpg",
-  "5.jpg",
-  "3.jpg",
-  "4.jpg",
+  "image-1.png",
+  "image-2.png",
+  "image-3.png",
+  "image-4.png",
+  "image-5.png",
 ];
 
 //initially empty
